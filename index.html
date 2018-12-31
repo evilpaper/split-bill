@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no initial-scale=1 maximum-scale=1" />
+    <title>Split Bill</title>
+    <link rel="stylesheet" href="css/styles.css"/>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#00aba9">
+    <meta name="theme-color" content="#ffffff">
+
+  </head>
+
+  <body>
+    <img class="sp__top-left" src="img/left_corner.svg" alt="Tourquise shape in the top left corner">
+    <img class="sp__bottom-right" src="img/right_corner.svg" alt="Tourquise shape in the bottom right corner">
+    <section class="sp__device">
+      <div class="sp__device--top"></div>
+      <h1 class="sp_heading">Split Bill</h1>
+      <div class="sp__display">
+        <div class="sp__display--total">
+          <label class="sp__display--total-label">Total</label>
+          <div class="sp__display--total-amount typing">$</div>
+        </div>
+        <div class="sp__display--summary">
+          <div class="sp__display--summary-item">
+            <label class=" sp__display--label">Bill</label>
+            <span class="sp__display--bill-amount">0</span>
+          </div>
+          <div class="sp__display--summary-item">
+            <label class=" sp__display--label">Friends</label>
+            <span class="sp__display--friends">2</span>
+          </div>
+          <div class="sp__display--summary-item">
+            <label class=" sp__display--label">
+              Tips
+              <span class="sp__display--tip-percentage">(0%)</span>
+            </label>
+            <span class="sp__display--tip-amount">0</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sp__friends-container">
+        <input
+        class="sp__friends-slider"
+        type="range"
+        name="friends"
+        min="0"
+        max="10"
+        step="1"
+        value="1"
+        oninput="handleFriendsInput()"
+        />
+        <div class="sp__friends-meter"></div>
+      </div>
+
+
+      <div class="sp__tip-keys">
+        <button class="sp__tip-key is-selected">0%</button>
+        <button class="sp__tip-key">10%</button>
+        <button class="sp__tip-key">20%</button>
+        <button class="sp__tip-key">30%</button>
+      </div>
+
+      <div class="sp__number-keys">
+        <button>1</button> <button>2</button> <button>3</button>
+        <button>4</button> <button>5</button> <button>6</button>
+        <button>7</button> <button>8</button> <button>9</button>
+        <button>+</button> <button>0</button> <button>C</button>
+      </div>
+      <button class="sp__split-button">SPLIT BILL</button>
+    </section>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

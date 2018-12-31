@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="69px" height="53px" viewBox="0 0 69 53" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>Path 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="100%" y1="100%" x2="87.5450898%" y2="0%" id="linearGradient-1">
+            <stop stop-color="#3F2AAF" offset="0%"></stop>
+            <stop stop-color="#53A0FD" offset="78.2141989%"></stop>
+            <stop stop-color="#00F5E1" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M68.0054091,0.0122703176 C30.2074453,-0.528605802 7.53897555,16.8118997 0,52.0337868 C28.1013493,52.0337868 50.769819,52.0337868 68.0054091,52.0337868 L68.0054091,0.0122703176 Z" id="Path-2" fill="url(#linearGradient-1)"></path>
+    </g>
+</svg>
