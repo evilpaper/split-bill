@@ -14,8 +14,6 @@ let tip = 0;
 let whereofTip = 0;
 let total = 0;
 
-console.log("Hello, at least the consoel is working.");
-
 const createTotalString = (key, displayNumber) => {
   if (key === "C") {
     return (displayNumber = 0);
@@ -54,14 +52,7 @@ const resetTip = _ => {
   });
 };
 
-/*
-friends.addEventListener("move", e => {
-  friendsDisplay.textContent = e.target.value;
-  console.log("e.target.value")
-});
-*/
-
-function handleFriendsInput() {
+const handleFriendsInput = _ => {
   console.log(friends.value)
   friendsDisplay.textContent = friends.value;
   friendsMeter.style.width = friends.value / 10 * 100 - 2 + "%"
