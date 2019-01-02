@@ -354,6 +354,11 @@ input[type=range]:active {
   color: #000020;
 }
 
+.sp__number-keys-back {
+  width: 30%;
+  height: 30%;
+}
+
 /* Split button */
 
 .sp__split-button {

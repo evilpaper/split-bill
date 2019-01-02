@@ -1,13 +1,19 @@
+
 const app = document.querySelector(".sp__device");
+
+// DISPLAYS
 const totalDisplay = app.querySelector(".sp__display--total-amount");
 const billDisplay = app.querySelector(".sp__display--bill-amount");
 const friendsDisplay = app.querySelector(".sp__display--friends");
 const tipAmountDisplay = app.querySelector(".sp__display--tip-amount");
 const tipPercentageDisplay = app.querySelector(".sp__display--tip-percentage");
-const friends = app.querySelector(".sp__friends-slider");
+
+// INPUTS
+const friendsSlider = app.querySelector(".sp__friends-slider");
 const friendsMeter = app.querySelector(".sp__friends-meter");
-const tip_keys = app.querySelector(".sp__tip-keys");
-const number_keys = app.querySelector(".sp__number-keys");
+const tipKeys = app.querySelector(".sp__tip-keys");
+const numberKeys = app.querySelector(".sp__number-keys");
+
 
 let bill = 0;
 let tip = 0;
@@ -38,7 +44,7 @@ const updateVisualState = key => {
   key.classList.add("is-selected");
 };
 
-const updateState = _ => {
+const updateAppState = _ => {
   total = bill + bill * (tip / 100);
   whereofTip = bill * (tip / 100);
   totalDisplay.textContent = total.toFixed(0);
@@ -47,29 +53,28 @@ const updateState = _ => {
 
 const resetTip = _ => {
   tip = 0;
-  Array.from(tip_keys.children).forEach(k => {
+  Array.from(tipKeys.children).forEach(k => {
     k.classList.remove("is-selected");
   });
 };
 
 const handleFriendsInput = _ => {
-  console.log(friends.value)
-  friendsDisplay.textContent = friends.value;
-  friendsMeter.style.width = friends.value / 10 * 100 - 2 + "%"
+  friendsDisplay.textContent = friendsSlider.value;
+  friendsMeter.style.width = friendsSlider.value / 10 * 100 - 2 + "%"
 }
 
-tip_keys.addEventListener("click", e => {
+tipKeys.addEventListener("click", e => {
   const targetButton = e.target.closest('button') // Only target the button to avoid misfires
   if (targetButton) {
     const key = e.target.textContent;
     tip = parseFloat(key);
     tipPercentageDisplay.textContent = `(${key})`;
     updateVisualState(e.target);
-    updateState();
+    updateAppState();
   }
 });
 
-number_keys.addEventListener("click", e => {
+numberKeys.addEventListener("click", e => {
   const targetKey = e.target.closest("button")
   console.log(targetKey)
   if (targetKey) {
@@ -79,7 +84,7 @@ number_keys.addEventListener("click", e => {
     const updatedNumber = createTotalString(key, currentNumberOnBillDisplay);
     billDisplay.textContent = updatedNumber;
     bill = parseFloat(billDisplay.textContent);
-    updateState();
+    updateAppState();
   }
   targetKey.addEventListener("animationend", function() {targetKey.classList.remove("run-push-animation");});
 });
