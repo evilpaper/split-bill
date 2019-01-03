@@ -229,20 +229,35 @@ label {
   margin-bottom: 30px;
 }
 
+.sp_friends-icon-container {
+  position: absolute;
+  width: 16%;
+  height: 100%;
+  background: #00ba40;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sp_friends-icon {
+  width: 28%;
+}
+
 .sp__friends-slider {
   position: absolute;
-  width: 100%;
+  width: 84%;
   height: 100%;
   top: 0;
-  left: 0;
+  left: 16%;
 }
 
 .sp__friends-meter {
   position: absolute;
   width: 0%;
+  max-width: 84%;;
   height: 100%;
   top: 0;
-  left: 0;
+  left: 14%;
   background: #00ba40;
 }
 
@@ -254,14 +269,14 @@ input[type=range]{
 
 input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 20px;
+  width: 12px;
   height: 54px;
   background: #00ba40;
 }
 
 input[type=range]::-moz-range-thumb {
   -webkit-appearance: none;
-  width: 20px;
+  width: 12px;
   height: 54px;
   background: #00ba40;
 }

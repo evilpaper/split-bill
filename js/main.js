@@ -60,7 +60,9 @@ const resetTip = _ => {
 
 const handleFriendsInput = _ => {
   friendsDisplay.textContent = friendsSlider.value;
-  friendsMeter.style.width = friendsSlider.value / 10 * 100 - 2 + "%"
+  friendsMeter.style.width = (friendsSlider.value - 2) / 8 * 100 + "%";
+  console.log("friendsSlider = " + friendsSlider.value)
+  console.log("friendsMeter.width = " + friendsMeter.style.width);
 }
 
 tipKeys.addEventListener("click", e => {

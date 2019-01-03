@@ -49,14 +49,17 @@
       </div>
 
       <div class="sp__friends-container">
+        <div class="sp_friends-icon-container">
+            <img class="sp_friends-icon" src="img/big_user.svg" alt="Friends icon">
+        </div>
         <input
         class="sp__friends-slider"
         type="range"
         name="friends"
-        min="0"
+        min="2"
         max="10"
         step="1"
-        value="1"
+        value="2"
         oninput="handleFriendsInput()"
         />
         <div class="sp__friends-meter"></div>
