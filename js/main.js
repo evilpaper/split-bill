@@ -7,6 +7,7 @@ const billDisplay = app.querySelector(".sp__display--bill-amount");
 const friendsDisplay = app.querySelector(".sp__display--friends");
 const tipAmountDisplay = app.querySelector(".sp__display--tip-amount");
 const tipPercentageDisplay = app.querySelector(".sp__display--tip-percentage");
+const friendsInSlider = app.querySelector(".sp__friends-number")
 
 // INPUTS
 const friendsSlider = app.querySelector(".sp__friends-slider");
@@ -20,20 +21,35 @@ let tip = 0;
 let whereofTip = 0;
 let total = 0;
 
+const getKeyType = (key) => {
+  const { action } = key.dataset
+  if (!action) return 'number'
+  if (action === "clear") return 'clear'
+  return action
+}
+
 const createTotalString = (key, displayNumber) => {
-  if (key === "C") {
-    return (displayNumber = 0);
+  const keyContent = key.textContent;
+  const keyType = getKeyType(key)
+  console.log(key)
+  console.log(keyContent)
+  console.log(displayNumber)
+  if (keyType === "clear") {
+    return "0";
   }
-  if (displayNumber === "0") {
-    return key;
-  }
-  if (displayNumber !== "0") {
-    if (displayNumber.length > 5) {
-      return displayNumber;
-    } else {
-      return displayNumber + key;
+  if (keyType === "number") {
+    if (displayNumber === "0") {
+      return keyContent;
+    }
+    if (displayNumber !== "0") {
+      if (displayNumber.length > 5) {
+        return displayNumber;
+      } else {
+        return displayNumber + keyContent;
+      }
     }
   }
+
 };
 
 const updateVisualState = key => {
@@ -60,9 +76,10 @@ const resetTip = _ => {
 
 const handleFriendsInput = _ => {
   friendsDisplay.textContent = friendsSlider.value;
-  friendsMeter.style.width = (friendsSlider.value - 2) / 8 * 100 + "%";
-  console.log("friendsSlider = " + friendsSlider.value)
-  console.log("friendsMeter.width = " + friendsMeter.style.width);
+  friendsInSlider.textContent = friendsSlider.value;
+  // friendsMeter.style.width = (friendsSlider.value - 2) / 8 * 100 + "%";
+  // console.log("friendsSlider = " + friendsSlider.value)
+  // console.log("friendsMeter.width = " + friendsMeter.style.width);
 }
 
 tipKeys.addEventListener("click", e => {
@@ -77,16 +94,14 @@ tipKeys.addEventListener("click", e => {
 });
 
 numberKeys.addEventListener("click", e => {
-  const targetKey = e.target.closest("button")
-  console.log(targetKey)
-  if (targetKey) {
-    targetKey.classList.add("run-push-animation");
-    const key = e.target.textContent;
+  const key = e.target.closest("button")
+  if (key) {
     const currentNumberOnBillDisplay = billDisplay.textContent;
-    const updatedNumber = createTotalString(key, currentNumberOnBillDisplay);
-    billDisplay.textContent = updatedNumber;
+    billDisplay.textContent = createTotalString(key, currentNumberOnBillDisplay);
     bill = parseFloat(billDisplay.textContent);
+
+    key.classList.add("run-push-animation");
     updateAppState();
   }
-  targetKey.addEventListener("animationend", function() {targetKey.classList.remove("run-push-animation");});
+  key.addEventListener("animationend", function() {key.classList.remove("run-push-animation");});
 });

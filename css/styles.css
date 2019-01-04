@@ -229,9 +229,9 @@ label {
   margin-bottom: 30px;
 }
 
-.sp_friends-icon-container {
+.sp__friends-icon-container {
   position: absolute;
-  width: 16%;
+  width: 15%;
   height: 100%;
   background: #00ba40;
   display: flex;
@@ -239,44 +239,70 @@ label {
   align-items: center;
 }
 
-.sp_friends-icon {
-  width: 28%;
+.sp__friends-icon {
+  width: 42%;
 }
 
 .sp__friends-slider {
+  margin: 0;
   position: absolute;
-  width: 84%;
+  width: 70%;
   height: 100%;
   top: 0;
-  left: 16%;
+  left: 15%;
 }
 
 .sp__friends-meter {
   position: absolute;
   width: 0%;
-  max-width: 84%;;
+  max-width: 70%;;
   height: 100%;
   top: 0;
-  left: 14%;
+  left: 15%;
   background: #00ba40;
+}
+
+.sp__friends-number-container {
+  position: absolute;
+  width: 15%;
+  height: 100%;
+  left: 85%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:#efefef;
+  font-weight: 700;
+  font-size: 1.1em;
+  color: #000020;
 }
 
 input[type=range]{
   -webkit-appearance:none;
   -moz-appearance:none;
   background-color:#efefef;
+  overflow: hidden;
 }
 
 input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 12px;
+  width: 8px;
   height: 54px;
   background: #00ba40;
+  cursor: ew-resize;
+  box-shadow: -100px 0 0 100px #00ba40;
+}
+
+input[type="range"]::-moz-range-progress {
+  background-color: #00ba40;
+  height: 36px;
+}
+input[type="range"]::-moz-range-track {
+  background-color: #efefef;
 }
 
 input[type=range]::-moz-range-thumb {
   -webkit-appearance: none;
-  width: 12px;
+  width: 8px;
   height: 54px;
   background: #00ba40;
 }
@@ -287,8 +313,6 @@ input[type=range]:focus {
 input[type=range]:active {
   outline: none;
 }
-
-
 
 
 /* Tip keys */
