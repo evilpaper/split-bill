@@ -2,6 +2,15 @@
 const app = document.querySelector(".sp__device");
 
 // DISPLAYS
+
+// NEW NAME SUGGESTIONS
+// displayTotalPayable
+// displayAmountOnBill
+// displayNumberOfFriends
+// displayTipAmount
+// displayTipPercentage
+// numberOfFriendsOnSliderDisplay
+
 const totalDisplay = app.querySelector(".sp__display--total-amount");
 const billDisplay = app.querySelector(".sp__display--bill-amount");
 const friendsDisplay = app.querySelector(".sp__display--friends");
@@ -15,7 +24,7 @@ const friendsMeter = app.querySelector(".sp__friends-meter");
 const tipKeys = app.querySelector(".sp__tip-keys");
 const numberKeys = app.querySelector(".sp__number-keys");
 
-
+// See if you can refactor to remove these
 let bill = 0;
 let tip = 0;
 let whereofTip = 0;
@@ -31,11 +40,12 @@ const getKeyType = (key) => {
 const createTotalString = (key, displayNumber) => {
   const keyContent = key.textContent;
   const keyType = getKeyType(key)
-  console.log(key)
-  console.log(keyContent)
-  console.log(displayNumber)
+
   if (keyType === "clear") {
     return "0";
+  }
+  if (keyType === "add") {
+    return displayNumber;;
   }
   if (keyType === "number") {
     if (displayNumber === "0") {
@@ -49,10 +59,9 @@ const createTotalString = (key, displayNumber) => {
       }
     }
   }
-
 };
 
-const updateVisualState = key => {
+const markSelectedKeyAsSelected = key => {
   Array.from(key.parentNode.children).forEach(k => {
     k.classList.remove("is-selected");
     }
@@ -61,6 +70,7 @@ const updateVisualState = key => {
 };
 
 const updateAppState = _ => {
+  bill = parseFloat(billDisplay.textContent);
   total = bill + bill * (tip / 100);
   whereofTip = bill * (tip / 100);
   totalDisplay.textContent = total.toFixed(0);
@@ -74,21 +84,18 @@ const resetTip = _ => {
   });
 };
 
-const handleFriendsInput = _ => {
+const updateFriendsNumberOnDisplays = _ => {
   friendsDisplay.textContent = friendsSlider.value;
   friendsInSlider.textContent = friendsSlider.value;
-  // friendsMeter.style.width = (friendsSlider.value - 2) / 8 * 100 + "%";
-  // console.log("friendsSlider = " + friendsSlider.value)
-  // console.log("friendsMeter.width = " + friendsMeter.style.width);
 }
 
 tipKeys.addEventListener("click", e => {
-  const targetButton = e.target.closest('button') // Only target the button to avoid misfires
+  const targetButton = e.target.closest('button')
   if (targetButton) {
     const key = e.target.textContent;
     tip = parseFloat(key);
     tipPercentageDisplay.textContent = `(${key})`;
-    updateVisualState(e.target);
+    markSelectedKeyAsSelected(e.target);
     updateAppState();
   }
 });
@@ -98,10 +105,8 @@ numberKeys.addEventListener("click", e => {
   if (key) {
     const currentNumberOnBillDisplay = billDisplay.textContent;
     billDisplay.textContent = createTotalString(key, currentNumberOnBillDisplay);
-    bill = parseFloat(billDisplay.textContent);
-
-    key.classList.add("run-push-animation");
     updateAppState();
+    key.classList.add("run-push-animation");
   }
   key.addEventListener("animationend", function() {key.classList.remove("run-push-animation");});
 });
