@@ -235,12 +235,23 @@ label {
   height: 100%;
   background: #00ba40;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
+  overflow: visible;
+  z-index: 99;
 }
 
-.sp__friends-icon {
-  width: 42%;
+.sp__friends-icon-big {
+  width: 32%;
+  margin-left: 12px;
+}
+
+.sp__friends-icon-small {
+  width: 24%;
+  margin-left: -3px;
+  margin-top: 2px;
+  overflow: visible;
+  /* opacity: 0; */
 }
 
 .sp__friends-slider {

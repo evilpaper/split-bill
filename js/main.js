@@ -85,9 +85,40 @@ const resetTip = _ => {
 };
 
 const updateFriendsNumberOnDisplays = _ => {
+  const friendsToBeAdded = friendsSlider.value - 2;
   friendsDisplay.textContent = friendsSlider.value;
   friendsInSlider.textContent = friendsSlider.value;
+  friendsInSlider.classList.add("run-push-animation");
+  friendsInSlider.addEventListener("animationend", function() {friendsInSlider.classList.remove("run-push-animation");});
+  updateFriendsIcons(friendsToBeAdded);
 }
+
+const updateFriendsIcons = (friends) => {
+  const friendsContainer = app.querySelector(".sp__friends-icon-container")
+  const dynamicFriendsElements = app.querySelectorAll(".dynamic");
+  const friendsToBeRemoved = [...dynamicFriendsElements]
+
+  friendsToBeRemoved.forEach(friend => {
+    friendsContainer.removeChild(friend)
+  })
+
+  for (let index = 0; index < friends; index++) {
+    const friendElement = `<img class="sp__friends-icon-small dynamic" src="img/small_user.svg" alt="Friends icon">`;
+    friendsContainer.insertAdjacentHTML('beforeend', friendElement);
+  }
+}
+
+/*
+
+Update friends icon with the right number of friends
+
+1. Grab the friends icon elements that are variable. They all have the class "dynamic"
+2. Remove those elements from the DOM
+3. Get the friends value from the slider
+4. Create new friends elements based on the number from the slider. Give them the class "dynamic"
+5. Add those to the DOM after the first "small" icon
+
+*/
 
 tipKeys.addEventListener("click", e => {
   const targetButton = e.target.closest('button')
