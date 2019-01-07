@@ -42,7 +42,7 @@ const createTotalString = (key, displayNumber) => {
   const keyType = getKeyType(key)
 
   if (keyType === "clear") {
-    return "0";
+    return "$";
   }
   if (keyType === "add") {
     return displayNumber;;
@@ -73,7 +73,7 @@ const updateAppState = _ => {
   bill = parseFloat(billDisplay.textContent);
   total = bill + bill * (tip / 100);
   whereofTip = bill * (tip / 100);
-  totalDisplay.textContent = total.toFixed(0);
+  totalDisplay.textContent = "$" + total.toFixed(0).toString();
   tipAmountDisplay.textContent = whereofTip.toFixed(0);
 };
 
@@ -103,22 +103,11 @@ const updateFriendsIcons = (friends) => {
   })
 
   for (let index = 0; index < friends; index++) {
-    const friendElement = `<img class="sp__friends-icon-small dynamic" src="img/small_user.svg" alt="Friends icon">`;
+    const friendElement = `<img class="sp__friends-icon-small dynamic run-small-push-animation" src="img/small_user.svg" alt="Friends icon">`;
     friendsContainer.insertAdjacentHTML('beforeend', friendElement);
+
   }
 }
-
-/*
-
-Update friends icon with the right number of friends
-
-1. Grab the friends icon elements that are variable. They all have the class "dynamic"
-2. Remove those elements from the DOM
-3. Get the friends value from the slider
-4. Create new friends elements based on the number from the slider. Give them the class "dynamic"
-5. Add those to the DOM after the first "small" icon
-
-*/
 
 tipKeys.addEventListener("click", e => {
   const targetButton = e.target.closest('button')

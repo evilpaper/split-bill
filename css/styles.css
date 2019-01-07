@@ -248,7 +248,7 @@ label {
 
 .sp__friends-icon-small {
   width: 24%;
-  margin-left: -3px;
+  margin-left: -2px;
   margin-top: 2px;
   overflow: visible;
   /* opacity: 0; */
@@ -442,6 +442,30 @@ input[type=range]:active {
   50% {
     -webkit-transform: scale(2.4);
     transform: scale(2.4);
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+.run-small-push-animation {
+  -webkit-animation-name: push;
+  animation-name: push;
+  -webkit-animation-duration: 0.260s;
+  animation-duration: 0.260s;
+  -webkit-animation-timing-function: cubic-bezier(0, 0.88, 0.88, 0.78);
+  animation-timing-function: cubic-bezier(0, 0.88, 0.88, 0.78);
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@keyframes push {
+  50% {
+    -webkit-transform: scale(1.6);
+    transform: scale(1.6);
   }
 
   100% {
