@@ -1,34 +1,16 @@
 
 const app = document.querySelector(".sp__device");
+const displayTotalAmount = app.querySelector(".sp__display--total-amount");
+const displayBillAmount = app.querySelector(".sp__display--bill-amount");
+const displayNumberOfFriends = app.querySelector(".sp__display--friends");
+const displayTipAmount = app.querySelector(".sp__display--tip-amount");
+const displayTipPercentage = app.querySelector(".sp__display--tip-percentage");
+const sliderDisplayNumberOffFriends = app.querySelector(".sp__friends-number")
 
-// DISPLAYS
-
-// NEW NAME SUGGESTIONS
-// displayTotalPayable
-// displayAmountOnBill
-// displayNumberOfFriends
-// displayTipAmount
-// displayTipPercentage
-// numberOfFriendsOnSliderDisplay
-
-const totalDisplay = app.querySelector(".sp__display--total-amount");
-const billDisplay = app.querySelector(".sp__display--bill-amount");
-const friendsDisplay = app.querySelector(".sp__display--friends");
-const tipAmountDisplay = app.querySelector(".sp__display--tip-amount");
-const tipPercentageDisplay = app.querySelector(".sp__display--tip-percentage");
-const friendsInSlider = app.querySelector(".sp__friends-number")
-
-// INPUTS
+const display = document.querySelector(".sp__display");
 const friendsSlider = app.querySelector(".sp__friends-slider");
-const friendsMeter = app.querySelector(".sp__friends-meter");
 const tipKeys = app.querySelector(".sp__tip-keys");
 const numberKeys = app.querySelector(".sp__number-keys");
-
-// See if you can refactor to remove these
-let bill = 0;
-let tip = 0;
-let whereofTip = 0;
-let total = 0;
 
 const getKeyType = (key) => {
   const { action } = key.dataset
@@ -37,7 +19,7 @@ const getKeyType = (key) => {
   return action
 }
 
-const createTotalString = (key, displayNumber) => {
+const createBillString = (key, displayNumber) => {
   const keyContent = key.textContent;
   const keyType = getKeyType(key)
 
@@ -61,7 +43,18 @@ const createTotalString = (key, displayNumber) => {
   }
 };
 
-const markSelectedKeyAsSelected = key => {
+const createTipsString = () => {
+  const bill = parseFloat(display.querySelector(".sp__display--bill-amount")
+    .textContent);
+  const tip = parseFloat(display.querySelector(".sp__display--tip-percentage")
+    .textContent
+    .split("(").join(" ")
+    .split("%)").join(" ")
+    );
+  return (bill * (tip / 100)).toFixed(0);
+}
+
+const highlightSelectedKey = key => {
   Array.from(key.parentNode.children).forEach(k => {
     k.classList.remove("is-selected");
     }
@@ -69,27 +62,19 @@ const markSelectedKeyAsSelected = key => {
   key.classList.add("is-selected");
 };
 
-const updateAppState = _ => {
-  bill = parseFloat(billDisplay.textContent);
-  total = bill + bill * (tip / 100);
-  whereofTip = bill * (tip / 100);
-  totalDisplay.textContent = "$" + total.toFixed(0).toString();
-  tipAmountDisplay.textContent = whereofTip.toFixed(0);
+const createTotalString = _ => {
+  const bill = parseFloat(displayBillAmount.textContent);
+  const tip = parseFloat(displayTipAmount.textContent)
+  const total = bill + bill * (tip / 100);
+  return "$" + total.toFixed(0).toString();
 };
 
-const resetTip = _ => {
-  tip = 0;
-  Array.from(tipKeys.children).forEach(k => {
-    k.classList.remove("is-selected");
-  });
-};
-
-const updateFriendsNumberOnDisplays = _ => {
+const updateFriendsNumbers = _ => {
   const friendsToBeAdded = friendsSlider.value - 2;
-  friendsDisplay.textContent = friendsSlider.value;
-  friendsInSlider.textContent = friendsSlider.value;
-  friendsInSlider.classList.add("run-push-animation");
-  friendsInSlider.addEventListener("animationend", function() {friendsInSlider.classList.remove("run-push-animation");});
+  displayNumberOfFriends.textContent = friendsSlider.value;
+  sliderDisplayNumberOffFriends.textContent = friendsSlider.value;
+  sliderDisplayNumberOffFriends.classList.add("run-push-animation");
+  sliderDisplayNumberOffFriends.addEventListener("animationend", function() {sliderDisplayNumberOffFriends.classList.remove("run-push-animation");});
   updateFriendsIcons(friendsToBeAdded);
 }
 
@@ -105,7 +90,6 @@ const updateFriendsIcons = (friends) => {
   for (let index = 0; index < friends; index++) {
     const friendElement = `<img class="sp__friends-icon-small dynamic run-small-push-animation" src="img/small_user.svg" alt="Friends icon">`;
     friendsContainer.insertAdjacentHTML('beforeend', friendElement);
-
   }
 }
 
@@ -114,18 +98,19 @@ tipKeys.addEventListener("click", e => {
   if (targetButton) {
     const key = e.target.textContent;
     tip = parseFloat(key);
-    tipPercentageDisplay.textContent = `(${key})`;
-    markSelectedKeyAsSelected(e.target);
-    updateAppState();
+    displayTipPercentage.textContent = `(${key})`;
+    highlightSelectedKey(e.target);
+    displayTipAmount.textContent = createTipsString();
   }
 });
 
 numberKeys.addEventListener("click", e => {
   const key = e.target.closest("button")
   if (key) {
-    const currentNumberOnBillDisplay = billDisplay.textContent;
-    billDisplay.textContent = createTotalString(key, currentNumberOnBillDisplay);
-    updateAppState();
+    const billAmount = displayBillAmount.textContent;
+    displayBillAmount.textContent = createBillString(key, billAmount);
+    displayTipAmount.textContent = createTipsString();
+    displayTotalAmount.textContent = createTotalString();
     key.classList.add("run-push-animation");
   }
   key.addEventListener("animationend", function() {key.classList.remove("run-push-animation");});
