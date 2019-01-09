@@ -24,7 +24,7 @@ const createBillString = (key, displayNumber) => {
   const keyType = getKeyType(key)
 
   if (keyType === "clear") {
-    return "$";
+    return 0;
   }
   if (keyType === "add") {
     return displayNumber;;
@@ -54,19 +54,19 @@ const createTipsString = () => {
   return (bill * (tip / 100)).toFixed(0);
 }
 
+const createTotalString = _ => {
+  const bill = parseFloat(displayBillAmount.textContent);
+  const tip = parseFloat(displayTipAmount.textContent)
+  const total = bill + bill * (tip / 100);
+  return "$" + total.toFixed(0).toString();
+};
+
 const highlightSelectedKey = key => {
   Array.from(key.parentNode.children).forEach(k => {
     k.classList.remove("is-selected");
     }
   );
   key.classList.add("is-selected");
-};
-
-const createTotalString = _ => {
-  const bill = parseFloat(displayBillAmount.textContent);
-  const tip = parseFloat(displayTipAmount.textContent)
-  const total = bill + bill * (tip / 100);
-  return "$" + total.toFixed(0).toString();
 };
 
 const updateFriendsNumbers = _ => {
@@ -99,8 +99,8 @@ tipKeys.addEventListener("click", e => {
     const key = e.target.textContent;
     tip = parseFloat(key);
     displayTipPercentage.textContent = `(${key})`;
-    highlightSelectedKey(e.target);
     displayTipAmount.textContent = createTipsString();
+    highlightSelectedKey(e.target);
   }
 });
 
