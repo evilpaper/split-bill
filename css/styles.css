@@ -168,9 +168,9 @@ label {
 }
 
 .sp__display--total {
-  width: 54%;
-  min-width: 54%;
-  max-width: 54%;
+  width: 60%;
+  min-width: 60%;
+  max-width: 60%;
 }
 
 .sp__display--total-label {
@@ -180,10 +180,11 @@ label {
 }
 
 .sp__display--total-amount {
-  font-size: 2.4rem;
-  font-weight: 700;
+  font-size: 2.2rem;
+  font-weight: 600;
   display: inline-block;
-  min-width: 1px;;
+  min-width: 1px;
+  letter-spacing: -0.5px;
 }
 
 .typing {
@@ -199,8 +200,9 @@ label {
 
 .sp__display--summary-item {
   display: flex;
-  font-size: 0.7rem;
-  padding: 0.3em;
+  font-size: 0.6rem;
+  padding-top: 0.6em;
+  padding-bottom: 0.6em;
   margin-top: 0.2em;
 }
 
@@ -214,7 +216,7 @@ label {
 .sp__display--bill-amount,
 .sp__display--friends,
 .sp__display--tip-amount {
-  margin-left: 1em;
+  margin-left: 0.6em;
   font-weight: 700;
 }
 

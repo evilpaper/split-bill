@@ -26,15 +26,16 @@ const createBillString = (key, displayNumber) => {
   if (keyType === "clear") {
     return 0;
   }
-  if (keyType === "add") {
-    return displayNumber;;
+  if (keyType === "decimal") {
+    if (displayNumber.includes(".")) return displayNumber;
+    return displayNumber + ".";
   }
   if (keyType === "number") {
-    if (displayNumber === "0") {
+    if (displayNumber === "0.00") {
       return keyContent;
     }
-    if (displayNumber !== "0") {
-      if (displayNumber.length > 5) {
+    if (displayNumber !== "0.00") {
+      if (displayNumber.length >= 4) {
         return displayNumber;
       } else {
         return displayNumber + keyContent;
@@ -51,14 +52,14 @@ const createTipsString = () => {
     .split("(").join(" ")
     .split("%)").join(" ")
     );
-  return (bill * (tip / 100)).toFixed(0);
+  return (bill * (tip / 100)).toFixed(2);
 }
 
 const createTotalString = _ => {
   const bill = parseFloat(displayBillAmount.textContent);
   const tip = parseFloat(displayTipAmount.textContent)
-  const total = bill + bill * (tip / 100);
-  return "$" + total.toFixed(0).toString();
+  const total = bill + tip;
+  return "$" + total.toFixed(2).toString();
 };
 
 const highlightSelectedKey = key => {
@@ -88,8 +89,15 @@ const updateFriendsIcons = (friends) => {
   })
 
   for (let index = 0; index < friends; index++) {
-    const friendElement = `<img class="sp__friends-icon-small dynamic run-small-push-animation" src="img/small_user.svg" alt="Friends icon">`;
-    friendsContainer.insertAdjacentHTML('beforeend', friendElement);
+    let count = 0;
+    const addFriends = setInterval(function() {
+      const friendElement = `<img class="sp__friends-icon-small dynamic run-small-push-animation" src="img/small_user.svg" alt="Friends icon">`;
+      friendsContainer.insertAdjacentHTML('beforeend', friendElement);
+      count++;
+      if (count === friends) {
+        window.clearInterval(addFriends);
+    }
+    }, 100)
   }
 }
 
@@ -100,6 +108,7 @@ tipKeys.addEventListener("click", e => {
     tip = parseFloat(key);
     displayTipPercentage.textContent = `(${key})`;
     displayTipAmount.textContent = createTipsString();
+    displayTotalAmount.textContent = createTotalString();
     highlightSelectedKey(e.target);
   }
 });
