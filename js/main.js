@@ -1,3 +1,6 @@
+// TODO
+// Fix the counting, especially of bill amount, look at the total string, seems to work nice.
+// Fix the friends icon animation
 
 const app = document.querySelector(".sp__device");
 const displayTotalAmount = app.querySelector(".sp__display--total-amount");
@@ -117,9 +120,9 @@ numberKeys.addEventListener("click", e => {
   const key = e.target.closest("button")
   if (key) {
     const billAmount = displayBillAmount.textContent;
-    displayBillAmount.textContent = createBillString(key, billAmount);
+    displayBillAmount.textContent = billAmount.includes(".") ? createBillString(key, billAmount) : createBillString(key, billAmount) + ".00";
     displayTipAmount.textContent = createTipsString();
-    displayTotalAmount.textContent = createTotalString();
+    displayTotalAmount.textContent = billAmount.includes(".") ? createTotalString() : createTotalString() + ".00";
     key.classList.add("run-push-animation");
   }
   key.addEventListener("animationend", function() {key.classList.remove("run-push-animation");});
