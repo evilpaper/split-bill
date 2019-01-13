@@ -1,5 +1,4 @@
 // TODO
-// Fix the counting, especially of bill amount, look at the total string, seems to work nice.
 // Fix the friends icon animation
 
 const app = document.querySelector(".sp__device");
@@ -22,28 +21,26 @@ const getKeyType = (key) => {
   return action
 }
 
-const createBillString = (key, displayNumber) => {
+const createBillString = (key, billAmount) => {
   const keyContent = key.textContent;
   const keyType = getKeyType(key)
+  const displayNumber = billAmount;
 
   if (keyType === "clear") {
-    return 0;
+    return "0";
   }
   if (keyType === "decimal") {
     if (displayNumber.includes(".")) return displayNumber;
     return displayNumber + ".";
   }
   if (keyType === "number") {
-    if (displayNumber === "0.00") {
+    if (displayNumber === "0") {
       return keyContent;
     }
-    if (displayNumber !== "0.00") {
-      if (displayNumber.length >= 4) {
-        return displayNumber;
-      } else {
-        return displayNumber + keyContent;
-      }
+    if (displayNumber.length >= 6) {
+      return displayNumber;
     }
+      return displayNumber + keyContent;
   }
 };
 
@@ -55,14 +52,14 @@ const createTipsString = () => {
     .split("(").join(" ")
     .split("%)").join(" ")
     );
-  return (bill * (tip / 100)).toFixed(2);
+  return (bill * (tip / 100)) === Math.floor(bill * (tip / 100)) ? (bill * (tip / 100)) : (bill * (tip / 100)).toFixed(2);
 }
 
 const createTotalString = _ => {
   const bill = parseFloat(displayBillAmount.textContent);
   const tip = parseFloat(displayTipAmount.textContent)
   const total = bill + tip;
-  return "$" + total.toFixed(2).toString();
+  return "$" + total.toString();
 };
 
 const highlightSelectedKey = key => {
@@ -84,24 +81,40 @@ const updateFriendsNumbers = _ => {
 
 const updateFriendsIcons = (friends) => {
   const friendsContainer = app.querySelector(".sp__friends-icon-container")
+
   const dynamicFriendsElements = app.querySelectorAll(".dynamic");
   const friendsToBeRemoved = [...dynamicFriendsElements]
-
   friendsToBeRemoved.forEach(friend => {
     friendsContainer.removeChild(friend)
   })
 
-  for (let index = 0; index < friends; index++) {
-    let count = 0;
-    const addFriends = setInterval(function() {
+  const drawFriendsIcons = times => {
+    if (times === 0) return;
+    setTimeout(() => {
       const friendElement = `<img class="sp__friends-icon-small dynamic run-small-push-animation" src="img/small_user.svg" alt="Friends icon">`;
       friendsContainer.insertAdjacentHTML('beforeend', friendElement);
-      count++;
-      if (count === friends) {
-        window.clearInterval(addFriends);
+      drawFriendsIcons(times - 1);
     }
-    }, 100)
+    , 50)
   }
+
+  drawFriendsIcons(friends);
+
+  /* Old code with SetInterval and withou recursion
+  if (friends === 0) {
+    return
+  } else {
+    let counter = 0;
+    const intervalId = setInterval(() => {
+      const friendElement = `<img class="sp__friends-icon-small dynamic run-small-push-animation" src="img/small_user.svg" alt="Friends icon">`;
+      friendsContainer.insertAdjacentHTML('beforeend', friendElement);
+      counter += 1;
+      if (counter === friends) {
+        clearInterval(intervalId);
+       }
+      }, 50);
+  }
+  */
 }
 
 tipKeys.addEventListener("click", e => {
@@ -120,9 +133,9 @@ numberKeys.addEventListener("click", e => {
   const key = e.target.closest("button")
   if (key) {
     const billAmount = displayBillAmount.textContent;
-    displayBillAmount.textContent = billAmount.includes(".") ? createBillString(key, billAmount) : createBillString(key, billAmount) + ".00";
+    displayBillAmount.textContent = createBillString(key, billAmount);
     displayTipAmount.textContent = createTipsString();
-    displayTotalAmount.textContent = billAmount.includes(".") ? createTotalString() : createTotalString() + ".00";
+    displayTotalAmount.textContent = createTotalString();
     key.classList.add("run-push-animation");
   }
   key.addEventListener("animationend", function() {key.classList.remove("run-push-animation");});
