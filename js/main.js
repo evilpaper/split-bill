@@ -13,6 +13,7 @@ const display = document.querySelector(".sp__display");
 const friendsSlider = app.querySelector(".sp__friends-slider");
 const tipKeys = app.querySelector(".sp__tip-keys");
 const numberKeys = app.querySelector(".sp__number-keys");
+const splitBillKey = app.querySelector(".sp__split-button");
 
 const getKeyType = (key) => {
   const { action } = key.dataset
@@ -100,21 +101,6 @@ const updateFriendsIcons = (friends) => {
 
   drawFriendsIcons(friends);
 
-  /* Old code with SetInterval and withou recursion
-  if (friends === 0) {
-    return
-  } else {
-    let counter = 0;
-    const intervalId = setInterval(() => {
-      const friendElement = `<img class="sp__friends-icon-small dynamic run-small-push-animation" src="img/small_user.svg" alt="Friends icon">`;
-      friendsContainer.insertAdjacentHTML('beforeend', friendElement);
-      counter += 1;
-      if (counter === friends) {
-        clearInterval(intervalId);
-       }
-      }, 50);
-  }
-  */
 }
 
 tipKeys.addEventListener("click", e => {
@@ -140,3 +126,7 @@ numberKeys.addEventListener("click", e => {
   }
   key.addEventListener("animationend", function() {key.classList.remove("run-push-animation");});
 });
+
+splitBillKey.addEventListener("click", e => {
+  console.log(e);
+})
