@@ -72,6 +72,12 @@ label {
   width: 8%;
 }
 
+.hidden {
+  /* opacity: 0; */
+  /* display: none; */
+  visibility: hidden;
+}
+
 /* Device */
 
 .sp__device {

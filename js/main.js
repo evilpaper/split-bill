@@ -10,6 +10,7 @@ const displayTipPercentage = app.querySelector(".sp__display--tip-percentage");
 const sliderDisplayNumberOffFriends = app.querySelector(".sp__friends-number")
 
 const display = document.querySelector(".sp__display");
+const sliderBlock = app.querySelector(".sp__friends-container")
 const friendsSlider = app.querySelector(".sp__friends-slider");
 const tipKeys = app.querySelector(".sp__tip-keys");
 const numberKeys = app.querySelector(".sp__number-keys");
@@ -129,4 +130,7 @@ numberKeys.addEventListener("click", e => {
 
 splitBillKey.addEventListener("click", e => {
   console.log(e);
+  sliderBlock.classList.toggle("hidden");
+  tipKeys.classList.toggle("hidden");
+  numberKeys.classList.toggle("hidden");
 })
