@@ -59,7 +59,7 @@ const createTipsString = () => {
 
 const createTotalString = _ => {
   const bill = parseFloat(displayBillAmount.textContent);
-  const tip = parseFloat(displayTipAmount.textContent)
+  const tip = parseFloat(displayTipAmount.textContent);
   const total = bill + tip;
   return "$" + total.toString();
 };
@@ -122,14 +122,15 @@ numberKeys.addEventListener("click", e => {
     const billAmount = displayBillAmount.textContent;
     displayBillAmount.textContent = createBillString(key, billAmount);
     displayTipAmount.textContent = createTipsString();
-    displayTotalAmount.textContent = createTotalString();
+    displayTotalAmount.textContent = createTotalString(billAmount);
     key.classList.add("run-push-animation");
   }
   key.addEventListener("animationend", function() {key.classList.remove("run-push-animation");});
 });
 
 splitBillKey.addEventListener("click", e => {
-  console.log(e);
+  console.log(displayTotalAmount.textContent);
+  if (displayTotalAmount.textContent === "$0") return
   sliderBlock.classList.toggle("hidden");
   tipKeys.classList.toggle("hidden");
   numberKeys.classList.toggle("hidden");
