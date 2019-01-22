@@ -39,7 +39,7 @@ const createBillString = (key, billAmount) => {
     if (displayNumber === "0") {
       return keyContent;
     }
-    if (displayNumber.length >= 6) {
+    if (displayNumber.length > 7) {
       return displayNumber;
     }
       return displayNumber + keyContent;
@@ -131,7 +131,17 @@ numberKeys.addEventListener("click", e => {
 splitBillKey.addEventListener("click", e => {
   console.log(displayTotalAmount.textContent);
   if (displayTotalAmount.textContent === "$0") return
+  // Hide current content
   sliderBlock.classList.toggle("hidden");
   tipKeys.classList.toggle("hidden");
   numberKeys.classList.toggle("hidden");
+
+  // Generate new content
+  const friends = [...Array(parseFloat(friendsSlider.value))]
+  friends.forEach(friend => {
+    console.log("Hello friend")
+  })
+  const partOfBill = document.createElement("div");
+  partOfBill.innerHTML = `<p>I'm a friend</p>`;
+  app.appendChild(partOfBill)
 })
