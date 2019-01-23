@@ -8,6 +8,7 @@ const displayNumberOfFriends = app.querySelector(".sp__display--friends");
 const displayTipAmount = app.querySelector(".sp__display--tip-amount");
 const displayTipPercentage = app.querySelector(".sp__display--tip-percentage");
 const sliderDisplayNumberOffFriends = app.querySelector(".sp__friends-number")
+const splittedBillContainer = app.querySelector(".sp_splitted_bill-container");
 
 const display = document.querySelector(".sp__display");
 const sliderBlock = app.querySelector(".sp__friends-container")
@@ -143,5 +144,5 @@ splitBillKey.addEventListener("click", e => {
   })
   const partOfBill = document.createElement("div");
   partOfBill.innerHTML = `<p>I'm a friend</p>`;
-  app.appendChild(partOfBill)
+  splittedBillContainer.appendChild(partOfBill)
 })

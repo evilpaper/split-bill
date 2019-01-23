@@ -432,6 +432,14 @@ input[type=range]:active {
   margin-top: 6%;
 }
 
+/* Splitted bill */
+
+.sp_splitted_bill-container {
+  padding: 2em;
+  background: white;
+  text-align: center;
+}
+
 /* Animations */
 
 .run-push-animation {
