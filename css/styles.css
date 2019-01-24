@@ -434,7 +434,7 @@ input[type=range]:active {
 
 /* Splitted bill */
 
-.sp_splitted_bill-container {
+.sp__parts_of_bill {
   padding: 2em;
   background: white;
   text-align: center;
