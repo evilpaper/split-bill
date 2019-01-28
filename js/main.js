@@ -142,9 +142,10 @@ splitBillKey.addEventListener("click", e => {
 
   friends.forEach(friend => {
     const partOfBill = document.createElement("li");
+    partOfBill.classList.add("sp__parts_of_bill");
     partOfBill.innerHTML = `
-      <p class="sp__parts_of_bill">Person A</p>
-      <p class="sp__parts_of_bill">$10</p>
+      <h3 class="sp__parts_of_bill-person">Person A</h3>
+      <h2 class="sp__parts_of_bill-amount">$10</h2>
       `;
     splittedBillContainer.appendChild(partOfBill)
   })

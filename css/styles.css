@@ -420,8 +420,10 @@ input[type=range]:active {
 /* Split button */
 
 .sp__split-button {
-  margin-top: 1rem;
-  width: 100%;
+  position: absolute;
+  top: 40em;
+  left: 5%;
+  width: 90%;
   background-color: #00ba40;
   height: 46px;
   border: none;
@@ -429,7 +431,6 @@ input[type=range]:active {
   border-radius: 4px;
   font-size: 0.94em;
   font-weight: 500;
-  margin-top: 6%;
 }
 
 /* Splitted bill */
@@ -438,6 +439,16 @@ input[type=range]:active {
   padding: 2em;
   background: white;
   text-align: center;
+}
+
+.sp__parts_of_bill-person {
+  font-size: 0.6em;
+  text-transform: uppercase;
+}
+.sp__parts_of_bill-amount {
+  font-size: 2em;
+  font-weight: 700;
+
 }
 
 /* Animations */
