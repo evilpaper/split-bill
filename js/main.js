@@ -91,7 +91,7 @@ const updateFriendsIcons = (friends) => {
     friendsContainer.removeChild(friend)
   })
 
-  const drawFriendsIcons = times => {
+  const drawFriendsIcons = (times) => {
     if (times === 0) return;
     setTimeout(() => {
       const friendElement = `<img class="sp__friends-icon-small dynamic run-small-push-animation" src="img/small_user.svg" alt="Friends icon">`;
@@ -103,6 +103,24 @@ const updateFriendsIcons = (friends) => {
 
   drawFriendsIcons(friends);
 
+}
+
+const createSplittedBill = _ => {
+  const friends = [...Array(parseFloat(friendsSlider.value))]
+
+  friends.forEach(friend => {
+    const partOfBill = document.createElement("li");
+    partOfBill.classList.add("sp__parts_of_bill");
+    partOfBill.innerHTML = `
+      <h3 class="sp__parts_of_bill-person">Person A</h3>
+      <h2 class="sp__parts_of_bill-amount">$10</h2>
+      `;
+    splittedBillContainer.appendChild(partOfBill)
+  })
+}
+
+const removeSplittedBill = _ => {
+  splittedBillContainer.remove();
 }
 
 tipKeys.addEventListener("click", e => {
@@ -130,23 +148,18 @@ numberKeys.addEventListener("click", e => {
 });
 
 splitBillKey.addEventListener("click", e => {
-  console.log(displayTotalAmount.textContent);
+
   if (displayTotalAmount.textContent === "$0") return
+
+  if (sliderBlock.classList.contains("hidden")) {
+    removeSplittedBill()
+  } else {
+    createSplittedBill()
+  }
+
   // Hide current content
   sliderBlock.classList.toggle("hidden");
   tipKeys.classList.toggle("hidden");
   numberKeys.classList.toggle("hidden");
 
-  // Generate new content
-  const friends = [...Array(parseFloat(friendsSlider.value))]
-
-  friends.forEach(friend => {
-    const partOfBill = document.createElement("li");
-    partOfBill.classList.add("sp__parts_of_bill");
-    partOfBill.innerHTML = `
-      <h3 class="sp__parts_of_bill-person">Person A</h3>
-      <h2 class="sp__parts_of_bill-amount">$10</h2>
-      `;
-    splittedBillContainer.appendChild(partOfBill)
-  })
 })
