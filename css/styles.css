@@ -421,9 +421,10 @@ input[type=range]:active {
 
 .sp__split-button {
   position: absolute;
+  width: 20em;
   top: 40em;
-  left: 5%;
-  width: 90%;
+  left: 50%;
+  margin-left: -10em;
   background-color: #00ba40;
   height: 46px;
   border: none;
@@ -431,6 +432,15 @@ input[type=range]:active {
   border-radius: 4px;
   font-size: 0.94em;
   font-weight: 500;
+  overflow: hidden;
+  transition: all 0.26s ease-out;
+}
+
+.shrinked {
+  border-radius: 50%;
+  width: 46px;
+  margin-left: -23px;
+  top: 43em;
 }
 
 /* Splitted bill */

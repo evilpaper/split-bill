@@ -157,6 +157,9 @@ splitBillKey.addEventListener("click", e => {
     createSplittedBill()
   }
 
+  splitBillKey.classList.toggle("shrinked")
+  splitBillKey.innerHTML = "";
+
   // Hide current content
   sliderBlock.classList.toggle("hidden");
   tipKeys.classList.toggle("hidden");
