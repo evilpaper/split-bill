@@ -91,6 +91,7 @@ label {
   height: 84vh;
   width: 41vh;
 */
+overflow: hidden;
   height: 700px;
   width: 340px;
   box-shadow: 14px 14px 64px -10px rgba(24, 48, 68, 0.68);
@@ -433,7 +434,7 @@ input[type=range]:active {
   font-size: 0.94em;
   font-weight: 500;
   overflow: hidden;
-  transition: all 0.26s ease-out;
+  transition: all 0.26s cubic-bezier(0.250, 0.460, 0.450, 0.940);;
 }
 
 .shrinked {
