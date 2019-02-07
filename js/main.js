@@ -158,7 +158,12 @@ splitBillKey.addEventListener("click", e => {
   }
 
   splitBillKey.classList.toggle("shrinked")
-  splitBillKey.innerHTML = "";
+  if (splitBillKey.classList.contains("shrinked")) {
+    splitBillKey.innerHTML = "";
+  } else {
+    splitBillKey.innerHTML = "Split bill";
+  }
+
 
   // Hide current content
   sliderBlock.classList.toggle("hidden");
