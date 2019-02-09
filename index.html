@@ -2,24 +2,35 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, user-scalable=no initial-scale=1 maximum-scale=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no initial-scale=1 maximum-scale=1"
+    />
     <title>Split Bill</title>
-    <link rel="stylesheet" href="css/styles.css"/>
+    <link rel="stylesheet" href="css/styles.css" />
 
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
 
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
 
-    <link rel="manifest" href="site.webmanifest">
-    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#00aba9">
-    <meta name="theme-color" content="#ffffff">
+    <link rel="manifest" href="site.webmanifest" />
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="msapplication-TileColor" content="#00aba9" />
+    <meta name="theme-color" content="#ffffff" />
   </head>
 
   <body>
-    <img class="sp__top-left" src="img/left_corner.svg" alt="Tourquise shape in the top left corner">
-    <img class="sp__bottom-right" src="img/right_corner.svg" alt="Tourquise shape in the bottom right corner">
+    <img
+      class="sp__top-left"
+      src="img/left_corner.svg"
+      alt="Tourquise shape in the top left corner"
+    />
+    <img
+      class="sp__bottom-right"
+      src="img/right_corner.svg"
+      alt="Tourquise shape in the bottom right corner"
+    />
     <section class="sp__device">
       <div class="sp__device--top"></div>
       <h1 class="sp_heading">Split Bill</h1>
@@ -51,24 +62,34 @@
 
       <div class="sp__friends-container">
         <div class="sp__friends-icon-container">
-            <!--
+          <!--
             <img class="sp__friends-icon" src="img/friends.svg" alt="Friends icon">
             -->
-            <img class="sp__friends-icon-big" src="img/big_user.svg" alt="Friends icon">
-            <img class="sp__friends-icon-small" src="img/small_user.svg" alt="Friends icon">
-          </div>
+          <img
+            class="sp__friends-icon-big"
+            src="img/big_user.svg"
+            alt="Friends icon"
+          />
+          <img
+            class="sp__friends-icon-small"
+            src="img/small_user.svg"
+            alt="Friends icon"
+          />
+        </div>
         <input
-        class="sp__friends-slider"
-        type="range"
-        name="friends"
-        min="2"
-        max="10"
-        step="1"
-        value="2"
-        oninput="updateFriendsNumbers()"
+          class="sp__friends-slider"
+          type="range"
+          name="friends"
+          min="2"
+          max="10"
+          step="1"
+          value="2"
+          oninput="updateFriendsNumbers()"
         />
         <div class="sp__friends-meter"></div>
-        <div class="sp__friends-number-container"><span class="sp__friends-number">2</span></div>
+        <div class="sp__friends-number-container">
+          <span class="sp__friends-number">2</span>
+        </div>
       </div>
 
       <div class="sp__tip-keys">
@@ -82,9 +103,36 @@
         <button>1</button> <button>2</button> <button>3</button>
         <button>4</button> <button>5</button> <button>6</button>
         <button>7</button> <button>8</button> <button>9</button>
-        <button data-action="decimal">.</button> <button>0</button> <button data-action="clear"><img class="sp__number-keys-back" src="img/back_button.svg" alt="Back Button"></button>
+        <button data-action="decimal">.</button> <button>0</button>
+        <button data-action="clear">
+          <img
+            class="sp__number-keys-back"
+            src="img/back_button.svg"
+            alt="Back Button"
+          />
+        </button>
       </div>
+
       <button class="sp__split-button">SPLIT BILL</button>
+      <svg
+        class="sp__split-button-pen hidden"
+        width="145"
+        height="144"
+        viewBox="0 0 145 144"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M18.3402 129.817C16.7184 130.497 15.0715 128.903 15.6979 127.26L30.4271 88.617L55.8829 114.073L18.3402 129.817Z"
+          fill="white"
+        />
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M35.3768 83.6674L53.0545 65.9897L53.7616 65.2826L110.33 8.71404C115.016 4.02775 122.614 4.02775 127.301 8.71404L135.786 17.1993C140.472 21.8856 140.472 29.4836 135.786 34.1699L79.2175 90.7384L78.5103 91.4455L60.8327 109.123L35.3768 83.6674ZM51.2868 79.0711C49.9199 80.438 49.9199 82.6541 51.2868 84.0209C52.6536 85.3877 54.8697 85.3877 56.2365 84.0209L119.876 20.3813C121.243 19.0145 121.243 16.7984 119.876 15.4315C118.509 14.0647 116.293 14.0647 114.926 15.4315L51.2868 79.0711Z"
+          fill="white"
+        />
+      </svg>
     </section>
 
     <script src="js/main.js"></script>

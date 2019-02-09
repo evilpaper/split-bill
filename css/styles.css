@@ -439,9 +439,18 @@ input[type=range]:active {
 
 .shrinked {
   border-radius: 50%;
-  width: 46px;
-  margin-left: -23px;
+  width: 60px;
+  height: 60px;
+  margin-left: -30px;
   top: 43em;
+}
+
+.sp__split-button-pen {
+  position: absolute;
+  width: 1em;
+  top: 37em;
+  left: 9.4em;
+  pointer-events: none;
 }
 
 /* Splitted bill */
