@@ -113,13 +113,17 @@ const updateFriendsIcons = friends => {
 
 const createSplittedBill = _ => {
   const friends = [...Array(parseFloat(friendsSlider.value))];
+  const bill = parseFloat(displayBillAmount.textContent);
+  const tip = parseFloat(displayTipAmount.textContent);
+  const total = bill + tip;
+  const partOfBillAmount = total / friends.length;
 
   friends.forEach(friend => {
     const partOfBill = document.createElement("li");
     partOfBill.classList.add("sp__parts_of_bill");
     partOfBill.innerHTML = `
       <h3 class="sp__parts_of_bill-person">Person A</h3>
-      <h2 class="sp__parts_of_bill-amount">$10</h2>
+      <h2 class="sp__parts_of_bill-amount">${partOfBillAmount}</h2>
       `;
     splittedBillContainer.appendChild(partOfBill);
   });
