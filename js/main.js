@@ -123,14 +123,17 @@ const createSplittedBill = _ => {
     partOfBill.classList.add("sp__parts_of_bill");
     partOfBill.innerHTML = `
       <h3 class="sp__parts_of_bill-person">Person A</h3>
-      <h2 class="sp__parts_of_bill-amount">${partOfBillAmount}</h2>
+      <h2 class="sp__parts_of_bill-amount">${partOfBillAmount.toFixed(2)}</h2>
       `;
     splittedBillContainer.appendChild(partOfBill);
   });
 };
 
 const removeSplittedBill = _ => {
-  splittedBillContainer.remove();
+  while (splittedBillContainer.firstChild) {
+    splittedBillContainer.removeChild(splittedBillContainer.firstChild);
+  }
+  // splittedBillContainer.remove();
 };
 
 tipKeys.addEventListener("click", e => {
