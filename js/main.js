@@ -1,5 +1,4 @@
 // TODO
-// Fix the friends icon animation
 
 const app = document.querySelector(".sp__device");
 const displayTotalAmount = app.querySelector(".sp__display--total-amount");
@@ -17,6 +16,8 @@ const tipKeys = app.querySelector(".sp__tip-keys");
 const numberKeys = app.querySelector(".sp__number-keys");
 const splitBillKey = app.querySelector(".sp__split-button");
 const splitBillEditPen = app.querySelector(".sp__split-button-pen");
+
+const persons = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
 
 const getKeyType = key => {
   const { action } = key.dataset;
@@ -92,7 +93,6 @@ const updateFriendsNumbers = _ => {
 
 const updateFriendsIcons = friends => {
   const friendsContainer = app.querySelector(".sp__friends-icon-container");
-
   const dynamicFriendsElements = app.querySelectorAll(".dynamic");
   const friendsToBeRemoved = [...dynamicFriendsElements];
   friendsToBeRemoved.forEach(friend => {
@@ -118,13 +118,25 @@ const createSplittedBill = _ => {
   const total = bill + tip;
   const partOfBillAmount = total / friends.length;
 
+  // 1. get the available space
+  // 2. give each element a equal part of that space
+  // lets hardcode. The available space is 350px
+
+  const height = 420 / friends.length;
+  let counter = 0;
+  // console.log(height);
+
   friends.forEach(friend => {
     const partOfBill = document.createElement("li");
     partOfBill.classList.add("sp__parts_of_bill");
+    partOfBill.style.height = height + "px";
     partOfBill.innerHTML = `
-      <h3 class="sp__parts_of_bill-person">Person A</h3>
-      <h2 class="sp__parts_of_bill-amount">${partOfBillAmount.toFixed(2)}</h2>
-      `;
+      <div>
+        <h3 class="sp__parts_of_bill-person">Person ${persons[counter]}</h3>
+        <h2 class="sp__parts_of_bill-amount">${partOfBillAmount.toFixed(2)}</h2>
+      </div>
+        `;
+    counter += 1;
     splittedBillContainer.appendChild(partOfBill);
   });
 };
@@ -179,7 +191,6 @@ splitBillKey.addEventListener("click", e => {
     splitBillKey.innerHTML = "Split bill";
   }
 
-  // Hide current content
   sliderBlock.classList.toggle("hidden");
   tipKeys.classList.toggle("hidden");
   numberKeys.classList.toggle("hidden");
