@@ -118,18 +118,11 @@ const createSplittedBill = _ => {
   const total = bill + tip;
   const partOfBillAmount = total / friends.length;
 
-  // 1. get the available space
-  // 2. give each element a equal part of that space
-  // lets hardcode. The available space is 350px
-
-  const height = 420 / friends.length;
   let counter = 0;
-  // console.log(height);
 
   friends.forEach(friend => {
     const partOfBill = document.createElement("li");
     partOfBill.classList.add("sp__parts_of_bill");
-    partOfBill.style.height = height + "px";
     partOfBill.innerHTML = `
       <div>
         <h3 class="sp__parts_of_bill-person">Person ${persons[counter]}</h3>
@@ -145,7 +138,6 @@ const removeSplittedBill = _ => {
   while (splittedBillContainer.firstChild) {
     splittedBillContainer.removeChild(splittedBillContainer.firstChild);
   }
-  // splittedBillContainer.remove();
 };
 
 tipKeys.addEventListener("click", e => {
@@ -195,4 +187,5 @@ splitBillKey.addEventListener("click", e => {
   tipKeys.classList.toggle("hidden");
   numberKeys.classList.toggle("hidden");
   splitBillEditPen.classList.toggle("hidden");
+  splittedBillContainer.classList.toggle("full-height"); // Need this to make scroll work
 });
