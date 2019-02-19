@@ -1,5 +1,3 @@
-// TODO
-
 const app = document.querySelector(".sp__device");
 const displayTotalAmount = app.querySelector(".sp__display--total-amount");
 const displayBillAmount = app.querySelector(".sp__display--bill-amount");
@@ -19,7 +17,7 @@ const splitBillEditPen = app.querySelector(".sp__split-button-pen");
 
 const persons = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
 
-const getKeyType = key => {
+const getKeyType = (key) => {
   const { action } = key.dataset;
   if (!action) return "number";
   if (action === "clear") return "clear";
