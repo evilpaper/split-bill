@@ -17,7 +17,7 @@ const splitBillEditPen = app.querySelector(".sp__split-button-pen");
 
 const persons = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
 
-const getKeyType = (key) => {
+const getKeyType = key => {
   const { action } = key.dataset;
   if (!action) return "number";
   if (action === "clear") return "clear";
@@ -40,7 +40,7 @@ const createBillString = (key, billAmount) => {
     if (displayNumber === "0") {
       return keyContent;
     }
-    if (displayNumber.length > 7) {
+    if (displayNumber.length > 6) {
       return displayNumber;
     }
     return displayNumber + keyContent;
@@ -60,7 +60,7 @@ const createTipsString = () => {
       .join(" ")
   );
   return bill * (tip / 100) === Math.floor(bill * (tip / 100))
-    ? bill * (tip / 100)
+    ? (bill * (tip / 100)).toFixed(2)
     : (bill * (tip / 100)).toFixed(2);
 };
 

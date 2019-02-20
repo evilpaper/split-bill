@@ -175,9 +175,9 @@ overflow: hidden;
 }
 
 .sp__display--total {
-  width: 60%;
-  min-width: 60%;
-  max-width: 60%;
+  width: 64%;
+  min-width: 64%;
+  max-width: 64%;
 }
 
 .sp__display--total-label {
@@ -224,7 +224,7 @@ overflow: hidden;
 .sp__display--friends,
 .sp__display--tip-amount {
   margin-left: 0.6em;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 /* Friends slider */
