@@ -78,6 +78,25 @@ label {
   visibility: hidden;
 }
 
+/* Explaation */
+
+.sp__explanation--heading {
+  color: #14267a;
+  line-height: 1.6em;
+}
+
+.sp__explanation--paragraph {
+  color: #14267a;
+  line-height: 1.6em;
+  font-weight: 300;
+}
+
+.sp__explanation {
+  position: absolute;
+  bottom: 5em;
+  left: 5em;
+}
+
 /* Device */
 
 .sp__device {
@@ -87,11 +106,11 @@ label {
   justify-content: center;
   align-items: center;
  */
- /*
+  /*
   height: 84vh;
   width: 41vh;
 */
-overflow: hidden;
+  overflow: hidden;
   height: 700px;
   width: 340px;
   box-shadow: 14px 14px 64px -10px rgba(24, 48, 68, 0.68);
@@ -110,7 +129,6 @@ overflow: hidden;
   left: 80px;
   top: -12px;
 }
-
 
 /*
 .sp__device-screen {
@@ -144,26 +162,26 @@ overflow: hidden;
 }
 
 .sp__display:before {
-  content: '';
+  content: "";
   position: absolute;
   top: -120px;
   left: 100px;
   width: 200px;
   height: 200px;
-  background-color:#fff;
+  background-color: #fff;
   transform: rotate(45deg);
   opacity: 0.1;
   overflow: hidden;
 }
 
 .sp__display:after {
-  content: '';
+  content: "";
   position: absolute;
   top: -120px;
   left: 200px;
   width: 200px;
   height: 200px;
-  background-color:#fff;
+  background-color: #fff;
   transform: rotate(45deg);
   opacity: 0.14;
   overflow: hidden;
@@ -196,13 +214,16 @@ overflow: hidden;
 
 .typing {
   overflow: hidden;
-  animation:
-    typing 1s steps(30, end);
+  animation: typing 1s steps(30, end);
 }
 
 @keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
 }
 
 .sp__display--summary-item {
@@ -275,7 +296,7 @@ overflow: hidden;
 .sp__friends-meter {
   position: absolute;
   width: 0%;
-  max-width: 70%;;
+  max-width: 70%;
   height: 100%;
   top: 0;
   left: 15%;
@@ -290,20 +311,20 @@ overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color:#efefef;
+  background-color: #efefef;
   font-weight: 700;
   font-size: 1.1em;
   color: #000020;
 }
 
-input[type=range]{
-  -webkit-appearance:none;
-  -moz-appearance:none;
-  background-color:#efefef;
+input[type="range"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: #efefef;
   overflow: hidden;
 }
 
-input[type=range]::-webkit-slider-thumb {
+input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   width: 8px;
   height: 54px;
@@ -320,20 +341,19 @@ input[type="range"]::-moz-range-track {
   background-color: #efefef;
 }
 
-input[type=range]::-moz-range-thumb {
+input[type="range"]::-moz-range-thumb {
   -webkit-appearance: none;
   width: 8px;
   height: 54px;
   background: #00ba40;
 }
 
-input[type=range]:focus {
+input[type="range"]:focus {
   outline: none;
 }
-input[type=range]:active {
+input[type="range"]:active {
   outline: none;
 }
-
 
 /* Tip keys */
 
@@ -376,7 +396,7 @@ input[type=range]:active {
   border-width: 0 14px 14px 0;
   border-top-color: #00ba40;
   border-right-color: #00ba40;
-  animation: pulse 0.2s cubic-bezier(0.250, 0.460, 0.450, 0.940);
+  animation: pulse 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 @keyframes pulse {
@@ -390,7 +410,7 @@ input[type=range]:active {
     transform: translateX(0);
   }
   100% {
-    transform: scale(1);;
+    transform: scale(1);
   }
 }
 
@@ -434,7 +454,7 @@ input[type=range]:active {
   font-size: 0.94em;
   font-weight: 500;
   overflow: hidden;
-  transition: all 0.26s cubic-bezier(0.250, 0.460, 0.450, 0.940);;
+  transition: all 0.26s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .shrinked {
@@ -467,11 +487,11 @@ input[type=range]:active {
 }
 
 .sp__splitted_bill-container {
-    -ms-overflow-style: none;  // IE 10+
-    overflow: -moz-scrollbars-none;  // Firefox
+  -ms-overflow-style: none; // IE 10+
+  overflow: -moz-scrollbars-none; // Firefox
 }
 .sp__splitted_bill-container::-webkit-scrollbar {
-    display: none;  // Safari and Chrome
+  display: none; // Safari and Chrome
 }
 
 .sp__parts_of_bill {
@@ -494,21 +514,21 @@ input[type=range]:active {
 /* Animations */
 
 @keyframes slide-down {
-    0% {
-        opacity: 0;
-        transform: translateY(-40px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  0% {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .run-push-animation {
   -webkit-animation-name: push;
   animation-name: push;
-  -webkit-animation-duration: 0.260s;
-  animation-duration: 0.260s;
+  -webkit-animation-duration: 0.26s;
+  animation-duration: 0.26s;
   -webkit-animation-timing-function: cubic-bezier(0, 0.88, 0.88, 0.78);
   animation-timing-function: cubic-bezier(0, 0.88, 0.88, 0.78);
   -webkit-animation-iteration-count: 1;
@@ -531,8 +551,8 @@ input[type=range]:active {
 .run-small-push-animation {
   -webkit-animation-name: push;
   animation-name: push;
-  -webkit-animation-duration: 0.260s;
-  animation-duration: 0.260s;
+  -webkit-animation-duration: 0.26s;
+  animation-duration: 0.26s;
   -webkit-animation-timing-function: cubic-bezier(0, 0.88, 0.88, 0.78);
   animation-timing-function: cubic-bezier(0, 0.88, 0.88, 0.78);
   -webkit-animation-iteration-count: 1;

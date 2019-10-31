@@ -1,0 +1,25 @@
+{
+  "name": "split_bill",
+  "version": "1.0.0",
+  "description": "Basic implementation of Johny Vino's Split Bill design. As seen on Dribbble. Made as a learning project.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evilpaper/split_bill.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/evilpaper/split_bill/issues"
+  },
+  "homepage": "https://github.com/evilpaper/split_bill#readme",
+  "devDependencies": {
+    "eslint": "^5.14.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0"
+  }
+}
