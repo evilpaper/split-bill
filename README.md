@@ -11,7 +11,7 @@ I wanted to focus on the implementation and not the design for this project. Sea
 Also make sure you check out Jony vino™'s original design [here](https://dribbble.com/shots/4413821-Split-bill-Interaction).
 
 ## Built with
-Technology as close to the metal as possible i.e HTML, CSS and JavaScript. The metal = the browser in this case :).
+Technology close to the metal i.e HTML, CSS and JavaScript. The metal = the browser in this case :).
 
 ## Contributions
 Contributions are welcome. Issues are for bugs only.
