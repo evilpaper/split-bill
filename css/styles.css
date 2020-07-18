@@ -571,3 +571,26 @@ input[type="range"]:active {
     transform: scale(1);
   }
 }
+
+/* Media queries */
+
+/* Phone only */
+@media (max-width: 599px) {
+  .sp__explanation {
+    display: none;
+  }
+  .sp__device {
+    box-shadow: none;
+    border: none;
+    border-radius: none;
+  }
+  .sp__device--top {
+    display: none;
+  }
+  .sp__top-left {
+    display: none;
+  }
+  .sp__bottom-right {
+    display: none;
+  }
+}
