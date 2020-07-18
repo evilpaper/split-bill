@@ -4,14 +4,14 @@
 
 A juicy app for splitting bills and share costs with friends.  
 
-I wanted to focus on the impelementation and not the design for this project. Searched Dribbble and found Johny Vino's clean Split Bill. Liked it a lot and decided to give it a go. 
+I wanted to focus on the implementation and not the design for this project. Searched Dribbble and found Johny vino's clean Split Bill. Liked it a lot and decided to give it a go. 
 
 [Try it out here](https://brave-mirzakhani-591aa2.netlify.app/)
 
-Jony Vino's original design can be [viewed here](https://dribbble.com/shots/4413821-Split-bill-Interaction)
+Also make sure you check out Jony vino's original design [here](https://dribbble.com/shots/4413821-Split-bill-Interaction).
 
 ## Built with
-As close to the metal as possible i.e HTML, CSS and JavaScript. Metal equals the browser in this case :).
+Technology as close to the metal as possible i.e HTML, CSS and JavaScript. The metal = the browser in this case :).
 
 ## Contributions
 Contributions are welcome. Issues are for bugs only.
